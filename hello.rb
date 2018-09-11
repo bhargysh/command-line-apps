@@ -8,7 +8,7 @@ OptionParser.new do |parser|
     parser.on("-h", "--help", "Show this help message.") do ||
         puts parser
     end
-    parser.on("-c", "--count", Integer, "Repeat the message COUNT times") do |v|
+    parser.on("-c", "--count COUNT_TIMES", Integer, "Repeat the message COUNT times") do |v|
         options[:count_times] = v
         byebug
     end
