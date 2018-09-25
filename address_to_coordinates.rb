@@ -1,12 +1,12 @@
-require 'geokit'
+require './geocoder'
 
 class AddressToCoordinates
   def self.address_to_coordinates(address)
-    api_key
     byebug
-    address.to_s
-    coordinates = Geokit::Geocoders::BingGeocoder.geocode(address, :bias => 'aus')
-    coordinates.ll
+    error_message = 'Invalid input, please enter a valid string'
+    raise TypeError, error_message unless address.is_a? String
+    Geocoder.bing_api_key
+    Geocoder.coordinates
   end
 end
 #returns "lat, long"
