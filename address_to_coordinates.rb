@@ -8,13 +8,13 @@ class Coordinates
     Geocoder.coordinates
   end
 
-  def self.extract_lat(coordinates)
-    coordinates.split(",")
+  def self.lat
+    coordinates = address_to_coordinates.split(",")
     coordinates[0].to_i
   end
 
-  def self.extract_long(coordinates)
-    coordinates.split(",")
+  def self.long
+    coordinates = address_to_coordinates.split(",")
     coordinates[1].strip.to_i
   end
 end
