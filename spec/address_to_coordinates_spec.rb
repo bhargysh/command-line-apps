@@ -2,11 +2,10 @@ require './address_to_coordinates'
 require './geocoder'
 require 'byebug'
 
-RSpec.describe AddressToCoordinates do
+RSpec.describe Coordinates do
   subject(:address_to_coordinates) do
     described_class.address_to_coordinates(address)
   end
-
 
   context 'when address is provided in correct format' do
     let(:address) { '39 Rainbow Rd, Transylvania, LIT'}
