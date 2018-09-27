@@ -24,13 +24,14 @@ RSpec.describe AddressToCoordinates do
 
   context 'when address is invalid' do
     let(:address) { 12345678 }
-    let(:error_response) {}
+    let(:error_msg) { 'Invalid input, please enter a valid string' }
 
-    it 'returns an error message' do
-      expect(subject).to raise_error do |error|
-        expect(error).to be_a TypeError
-        expect(error.message).to eq(error_message)
-      end
+    it 'returns an error' do
+      expect{ subject }.to raise_error(TypeError)
+    end
+
+    it 'returns the correct error message' do
+      expect{ subject }.to raise_error(TypeError, error_msg)
     end
   end
 end
