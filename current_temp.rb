@@ -14,13 +14,17 @@ class Temperature
 
   private
   def fetch_response(lat, long)
-    #curl "http://api.openweathermap.org/data/2.5/weather?lat=25&lon=55&APPID=weather_api_key"
-    uri = URI.parse("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&APPID=weather_api_key")
+    uri = URI("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&APPID=weather_api_key")
     response = Net::HTTP.get(uri)
+    # require 'pry'; binding.pry
     extract_temp(response)
   end
 
   def extract_temp(response)
     temp = response['main']['temp']
   end
+
+  # def response_code(response)
+  #   response.code
+  # end
 end
