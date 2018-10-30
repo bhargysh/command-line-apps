@@ -14,17 +14,17 @@ class Temperature
 
   private
   def fetch_response(lat, long)
-    uri = URI("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&APPID=weather_api_key")
+    uri = URI("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&APPID=api-key")
     response = Net::HTTP.get(uri)
-    # require 'pry'; binding.pry
     extract_temp(response)
   end
 
   def extract_temp(response)
     temp = response['main']['temp']
+    convert_to_celsius(temp)
   end
 
-  # def response_code(response)
-  #   response.code
-  # end
+  def convert_to_celsius(temp)
+    celsius_temperature = ((temp - 32) * 5/9).round
+  end
 end
