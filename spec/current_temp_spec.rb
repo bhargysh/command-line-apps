@@ -9,7 +9,6 @@ RSpec.describe Temperature do
 
   context 'when correct lat and long is given' do
     let(:coordinates) { "#{lat}, #{long}" }
-    let(:response) { '25 deg' }
     let(:uri) { URI("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&APPID=4344aa8adf06a5646109007806023afe") }
     let(:response) do
       {

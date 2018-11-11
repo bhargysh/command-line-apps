@@ -14,7 +14,7 @@ class Temperature
 
   private
   def fetch_response(lat, long)
-    uri = URI("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&APPID=api-key")
+    uri = URI("http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{long}&APPID=4344aa8adf06a5646109007806023afe")
     response = Net::HTTP.get(uri)
     extract_temp(response)
   end
