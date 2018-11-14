@@ -1,6 +1,5 @@
 require 'net/http'
 require 'uri'
-require 'byebug'
 
 class Temperature
   def initialize

@@ -1,5 +1,6 @@
-require './current_temp'
-require './address_to_coordinates'
+require './app/current_temp'
+require './app/address_to_coordinates'
+
 RSpec.describe Temperature do
   let(:lat) { 35 }
   let(:long) { 139 }
