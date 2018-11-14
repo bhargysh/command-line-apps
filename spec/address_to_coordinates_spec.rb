@@ -1,5 +1,5 @@
-require './address_to_coordinates'
-require './geocoder'
+require './app/address_to_coordinates'
+require './app/geocoder'
 
 RSpec.describe Coordinates do
   subject(:address_to_coordinates) do
@@ -12,7 +12,7 @@ RSpec.describe Coordinates do
 
     before do
       allow(Geocoder).to receive(:bing_api_key)
-      allow(Geocoder).to receive(:coordinates).and_return(response)
+      allow(Geocoder).to receive(:coordinates).with(address).and_return(response)
     end
 
     it 'returns the latitude and longitude' do
