@@ -1,11 +1,21 @@
 require 'optparse'
 require_relative './address_to_coordinates'
+require_relative './current_temp'
 
 def parse_address(addr)
-  #require 'pry'; binding.pry
-  /\d+\s\w+\s\w+,\s+\w+,\s\w+$/.match(addr) do |match_obj|
-    #require "byebug"; byebug
-    Coordinates.address_to_coordinates(match_obj[0])
+  example = '511 Church St, Richmond, VIC'
+  if /\d+\s\w+\s\w+,\s+\w+,\s\w+$/.match(addr) do |match_obj|
+    coordinates = Coordinates.address_to_coordinates(match_obj[0])
+
+    lat = Coordinates.lat
+    long = Coordinates.long
+
+    '''need to split lat and long so can feed that into temp'''
+    #require 'pry'; binding.pry
+    Temperature.new.fetch_current_temp(lat, long)
+  end
+  else
+    puts "This input: ***#{addr}*** is not valid. An example of an input could be #{example}."
   end
 end
 
@@ -21,16 +31,11 @@ def getOptionsObject
       user_command[:address] = v
       parse_address(v)
     end
-  end#.parse!
+  end
   return x
 end
 
 getOptionsObject.parse!
-
-
-# parse_address(addr)
-
-
 #puts "The current temperature for #{user_command[:address]} is: Temperature.fetch_current_temp(parse_address(address))"
 
 #User inputs their address using the --address field
