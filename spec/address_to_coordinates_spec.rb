@@ -18,6 +18,14 @@ RSpec.describe Coordinates do
     it 'returns the latitude and longitude' do
       expect(subject).to eq(response)
     end
+
+    it 'correctly extracts the latitude' do
+      expect(Coordinates.lat(response)).to eq(99.0123)
+    end
+
+    it 'correctly extracts the longitude' do
+      expect(Coordinates.long(response)).to eq(-100.4567)
+    end
   end
 
   context 'when address is invalid' do

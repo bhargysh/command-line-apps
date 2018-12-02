@@ -8,13 +8,14 @@ class Coordinates
     Geocoder.coordinates(address)
   end
 
-  def self.lat
-    coordinates = address_to_coordinates.split(",")
-    coordinates[0].to_i
+  def self.lat(coordinates)
+    coordinates_list = coordinates.split(",")
+    coordinates_list[0].to_f
   end
 
-  def self.long
-    coordinates = address_to_coordinates.split(",")
-    coordinates[1].strip.to_i
+  def self.long(coordinates)
+    coordinates_list = coordinates.split(",")
+    coordinates_list[1].strip.to_f
   end
 end
+#should lat and long be class methods?
