@@ -5,7 +5,7 @@ RSpec.describe Temperature do
   let(:lat) { 35 }
   let(:long) { 139 }
   subject(:current_temp) do
-    described_class.new.fetch_current_temp(lat, long)
+    described_class.fetch_current_temp(lat, long)
   end
 
   context 'when correct lat and long is given' do
@@ -33,6 +33,8 @@ RSpec.describe Temperature do
 
     before do
       allow(Coordinates).to receive(:address_to_coordinates).and_return(coordinates)
+      allow(Coordinates).to receive(:lat).with(coordinates)
+      allow(Coordinates).to receive(:long).with(coordinates)
       allow(Net::HTTP).to receive(:get).with(uri).and_return(response)
     end
 
