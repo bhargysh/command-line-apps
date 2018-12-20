@@ -1,3 +1,4 @@
+require_relative './spec_helper'
 require './app/current_temp'
 require './app/address_to_coordinates'
 
