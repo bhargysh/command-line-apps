@@ -16,8 +16,7 @@ class Temperature
     end
 
     def extract_temp(response)
-      json_obj = JSON.parse(response)
-      temp = json_obj['main']['temp']
+      temp = response['main']['temp']
       convert_to_celsius(temp)
     end
 

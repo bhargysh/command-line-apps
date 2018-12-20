@@ -30,7 +30,7 @@ RSpec.describe Temperature do
         "cod": 200
       }
     end
-    let(:celsius_temp) { 143 }
+    let(:celsius_temp) { 16 }
 
     before do
       allow(Coordinates).to receive(:address_to_coordinates).and_return(coordinates)
