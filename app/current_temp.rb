@@ -16,7 +16,8 @@ class Temperature
     end
 
     def extract_temp(response)
-      temp = response['main']['temp']
+      json = JSON.parse(response)
+      temp = json['main']['temp']
       convert_to_celsius(temp)
     end
 
@@ -25,4 +26,3 @@ class Temperature
     end
   end
 end
-#should the temperature class be instantiated with lat long?

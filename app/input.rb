@@ -2,6 +2,7 @@ require 'optparse'
 require_relative './address_to_coordinates'
 require_relative './current_temp'
 
+private
 def parse_address(addr)
   if /\d+\s\w+\s\w+,\s+\w+,\s\w+$/.match?(addr)
     coordinates = Coordinates.address_to_coordinates(addr)

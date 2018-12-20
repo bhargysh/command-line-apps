@@ -18,4 +18,3 @@ class Coordinates
     coordinates_list[1].strip.to_f
   end
 end
-#should lat and long be class methods?
