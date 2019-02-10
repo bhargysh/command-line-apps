@@ -1,23 +1,21 @@
-FROM ruby:latest
+FROM ruby:2.5.3-alpine
+MAINTAINER Purchasing Squad <the-money-purchasing-squad@rea-group.com>
 
-# Set the working directory to /app
+RUN apk update && apk upgrade
+
+# Clean apk cache
+RUN rm -rf /var/cache/apk/*
+
+
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+ADD Gemfile Gemfile.lock ./
+
+#do the build dependencies step
+RUN apk --no-cache --virtual .build-deps add gcc make g++ && \
+    bundle install --jobs 8 --retry 3 && \
+    apk del .build-deps
+
 COPY . /app
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
-# Define environment variable
-ENV NAME World
-
-# Install shush
-RUN curl -sL -o /usr/local/bin/shush \
-    https://github.com/realestate-com-au/shush/releases/download/v1.3.3/shush_linux_amd64 \
- && chmod +x /usr/local/bin/shush
-
-ADD Gemfile* /app/
-
-
-CMD ["ruby", "app.rb"]
+CMD ["bin/run"]
