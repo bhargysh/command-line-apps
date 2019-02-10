@@ -1,3 +1,3 @@
 FileList['./lib/tasks/**/*.rake'].each { |task| load task }
-task default: [:quality, :spec]
+task default: [:spec]
 task test: [:default]
